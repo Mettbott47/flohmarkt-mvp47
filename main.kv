@@ -1,0 +1,31 @@
+# main.kv
+
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "📸 Scan & Speichern"
+            size_hint_y: 0.2
+            on_release: root.scan()
+        Button:
+            text: "🕘 Verlauf ansehen"
+            size_hint_y: 0.2
+            on_release: app.root.current = "history"
+
+<HistoryScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        RecycleView:
+            id: rv
+            viewclass: "Label"
+            RecycleBoxLayout:
+                default_size_hint: 1, None
+                default_size: None, dp(48)
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: "vertical"
+        Button:
+            text: "🔙 Zurück"
+            size_hint_y: 0.1
+            on_release: app.root.current = "main"
+
